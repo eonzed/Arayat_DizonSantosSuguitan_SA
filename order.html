@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Special+Elite&display=swap" rel="stylesheet"> 
+    <title>Wok of Art - Menu & Order Form</title>
+    <style>
+        body {
+            width: 90vw;
+
+            margin-left: 5vw;
+            margin-right: 5vw;
+
+            color: #3e3e3e;
+            font-family: 'Lato';
+
+            background-color: #f5f5dc;
+        }
+        header {
+            width: 90%;
+            height: 10vh;
+
+            background-color: #f5f5dc;
+
+            position: fixed;
+            z-index: 999;
+        }
+        #dragon-header {
+            width: auto;
+            height: 100%;
+        }
+        .w-20 {
+            width: 20%;
+        }
+        .text-decoration-none {
+            text-decoration: none !important;
+        }
+        .text-gray {
+            color: #3e3e3e;
+        }
+        .fluid-container {
+            height: 10vh;
+        }
+        #dragon {
+            width: 400px;
+            height: 400px;
+        }
+        .bg-beige {
+            background-color: #f5f5dc;
+        }
+        .top-10 {
+            top: 10vh;
+        }
+        .w-100.d-flex nav a {
+            width: 160px;
+            border-radius: 50px;
+            background-color: white;
+            transition: 0.5s;
+        }
+        .w-100.d-flex nav a:hover {
+            background-color: #d9a648;
+        }
+        .border-gold {
+            border-color: #d9a648 !important;
+        }
+        .img-container {
+            width: 500px;
+            height: 5px;
+        }
+        .img-container .img-fluid {
+            width: 500px;
+            height: 5px;
+
+            object-fit: cover;
+            object-position: center;
+        }
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+        .card {
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+        }
+        .card .btn {
+            min-width: 50px;
+            width: 50px;
+            height: 50px;
+            background-color: #a62c2b;
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+        .card .btn:hover {
+            background-color: #bb3b39;
+        }
+        .card .btn img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: 0.5s;
+        }
+        .card .btn:hover img {
+            filter: invert(1);
+        }
+        #cart {
+            height: 75vh;
+
+            margin-top: 7.5vh;
+
+            border-radius: 25px;
+        }
+        .top-15 {
+            top: 20vh;
+        }
+        form {
+            height: 80%;
+        }
+        .h-40 {
+            height: 40%;
+        }
+        .h-60 {
+            height: 60%;
+        }
+        .limited {
+            max-height: 30px;
+        }
+        #items button {
+            position: relative;
+            z-index: 999;
+        }
+        .dropdown-menu .dropdown-item:active {
+            background-color: #d9a648 !important; 
+            color: white !important;              
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #e0b75e;   
+            color: black;
+        }
+        .navig{
+            font-family: 'Montserrat';
+        }
+        .dropdown .btn.dropdown-toggle:focus,
+        .dropdown .btn.dropdown-toggle:focus-visible,
+        .dropdown .btn.dropdown-toggle.show:focus {
+            outline: none !important;
+            box-shadow: none !important;
+            border-color: transparent !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="d-flex justify-content-between align-items-center position-fixed">
+        <div id="left" class="w-50 h-100 d-flex align-items-center">
+            <img id="dragon-header" class="img-fluid" src="https://lh3.googleusercontent.com/pw/AP1GczNynXcRjevmiK5FwqUJn7Ojcv96_v-f6N5P6kGMLuVE7uu8Kn7Hl9WnYOmZi2LtZgJvxdL9QSKxW8rcnKSKAga0l3XgO5IcAW2Z9Gof7MasAQ6fzlQ=w2400" alt="Dragon">
+            <p class="fs-4 m-0">Wok of Art</p>
+        </div>
+        <nav class="navig w-20 d-flex align-items-center justify-content-start gap-4">
+            <a class="text-gray text-decoration-none fs-4" href="index.html">Home</a>
+            <a class="text-gray text-decoration-none fs-4" href="order.html">Order</a>
+            <div class="dropdown">
+              <button class="btn dropdown-toggle text-gray  text-decoration-none fs-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                About
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="chef.html">Chefs</a></li>
+                <li><a class="dropdown-item" href="about.html">References</a></li>
+              </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="fluid-container">
+
+    </div>
+    <main class="d-flex flex-column align-items-center">
+        <img id="dragon" class="img-fluid" src="https://lh3.googleusercontent.com/pw/AP1GczMPB-ItfgLqkv4YgvJQ20yHZs5vqbLIJ1aX1eZJJygsYyE679PzroQe2C4ttMwHPisO58K19TqJbuw9EXthKy4ZKx9jsByrWPRxqkxGqn5oq-r-Q9w=w2400" alt="Dragon">
+        <div class="w-100 d-flex justify-content-between align-items-center position-sticky top-10 z-3 bg-beige p-1">
+            <div class="img-container d-flex align-items-center">
+                <img class="img-fluid" src="https://lh3.googleusercontent.com/pw/AP1GczNe6W-TQXw1k_KVGiJb3c_3ib5gbwjJ5CVEP373wtFn6GTY1fFW1eskh-4onx4Z92sU0TwRbKwGcU-ML1vUirN-8sbPPfiiRxG5cOCy2jIsSsHRfBw=w2400" alt="Golden Line">
+            </div>
+            <nav class="d-flex justify-content-center align-items-center gap-2 m-1 mt-0 mb-0">
+                <a class="btn text-gray text-decoration-none fs-5 d-flex justify-content-center align-items-center border border-gold" href="#appetizers">Appetizers</a>
+                <a class="btn text-gray text-decoration-none fs-5 d-flex justify-content-center align-items-center border border-gold" href="#main-dishes">Main Dishes</a>
+                <a class="btn text-gray text-decoration-none fs-5 d-flex justify-content-center align-items-center border border-gold" href="#desserts">Desserts</a>
+                <a class="btn text-gray text-decoration-none fs-5 d-flex justify-content-center align-items-center border border-gold" href="#drinks">Drinks</a>
+            </nav>
+            <div class="img-container d-flex align-items-center">
+                <img class="img-fluid rotate-180" src="https://lh3.googleusercontent.com/pw/AP1GczNe6W-TQXw1k_KVGiJb3c_3ib5gbwjJ5CVEP373wtFn6GTY1fFW1eskh-4onx4Z92sU0TwRbKwGcU-ML1vUirN-8sbPPfiiRxG5cOCy2jIsSsHRfBw=w2400" alt="Golden Line">
+            </div>
+        </div>
+        <div class="row w-100">
+            <div class="col-9">
+                <div id="appetizers">
+                    <p class="h1 mt-2 mb-2">Appetizers</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNlLeBEyIsyaLMdwBlFfInrRtzw-cyag7Obkm7k6KKf4hRvjx7QwGTs1y5rhu_MNUtHGu6KhlWkJzxoES2IznL8ajOUXh_ea_CmkddFjWn6hh3Y20w=w2400" alt="Eggrolls">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Eggrolls</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNCRUJxGxv1g4ouQBVxWKbVgrZn5rcmRgVpgimaw0IuluIpCUkTaf_LH6_kr2vEPfBkCxz1UcUfoxTMtonvDOguyV5WucRaPbt3bO_cYtdJizIbwqk=w2400" alt="Bao Bun">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Bao Bun</p>
+                                        <p class="card-text fs-4">&#8369;90</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOPQYE_c7oU8cmIzshkRSu1kmfTECw4uBYWhhWC4-WLYREyMj00aG7pHrcli7XxEQbR0Msvqpzf3fZ3MnfGJPW5NxXC3RzCEH2JIMRdjrbxSV2srRQ=w2400" alt="Egg Foo Young">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Egg Foo Young</p>
+                                        <p class="card-text fs-4">&#8369;180</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczM9YX42wqoEcPVuWvK17GmyAU9-YKBd_sXgqRsfd_2lgw1OtKi6aY74h9CHJf1KQZNSUguFj2xQDqdJ9hZsDudFQD72qy7Hv8ptTP82ekTjjR-gS0w=w2400" alt="Wontons">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Wontons</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczM1VEn6eZnUXBv9Nxz0ukFcm_OkKnvYx4tZ7rYe249esQsowg52iQXs_4lKRKBdFc4gBiSdWKjq6ddLzPQ3ONibB__1uOCFuWo-ikpA3FsY95z5oCM=w2400" alt="Century Egg">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Century Egg</p>
+                                        <p class="card-text fs-4">&#8369;130</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOCbOKVBEf0m3BMZnp_AJQRcflWaEa7DZowf2DD7zvDKDxCKhtBJXXpAI_J9vuz3bllJR-sVDE53L-8W67Ec0ITfjtATordP-esVdEHwlaHR9Gy2PQ=w2400" alt="Grilled Squid">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Grilled Squid</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOASqwF-BcM5oIlkaiSnE0ebQfPXVP_y3tBnsy3K5mDmdWoCe_1z-UT6RBigmcsjPY5hOjqvCuAThHKbcA2mAlkY18XLUK3PrAcMRXFnUPr91lwUP0=w2400" alt="Grilled MeatBalls">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Grilled MeatBalls</p>
+                                        <p class="card-text fs-4">&#8369;65</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczO27J4g1m-jODlUAfw2s_tJIPu0hPaAvLna1w_-of3pqpOmF9mm8PszSKhOz49XtIYPAL9h-zl7cB3POF35L7Uje5C1blw3J2jye-1JqeCsHXTDac8=w2400" alt="Tofu on a Stick">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Tofu on a Stick</p>
+                                        <p class="card-text fs-4">&#8369;40</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main-dishes" class="mt-1">
+                    <p class="h1 mt-2 mb-2">Main Dishes</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNyNGRn_NFCoE7xd84F8iQoykELe-0m082hvGhNlWsy_VJOu6xRt0CAPqDDEANq2JH5GlqD_wolykZo7VAefaXeZP7Y6fm4UoX74wN1XSaWdlNYZQY=w2400" alt="Wonton Noodles">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Wonton Noodles</p>
+                                        <p class="card-text fs-4">&#8369;190</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNSfDYOJ5a8lRAsyonvifILgkCqLWCbUULQCzHN8mjaicfMNtWrKZW5hPebJzaQokbfbuWA4djj55MHmYNOylF8H3TebWMitXvyibhGpmhCuJtNcEg=w2400" alt="Fried Rice">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fried Rice</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczP-XtGERSLMmHzQIRGEhL91ilhX3Sh9cCgJbVUvo3QhoNkpCJ48UcEFD2njAtrQiylWkru75NsdlZaXWkYPHTvCDG2aC-ZCQFlqJJ_jMIWMSP18scI=w2400" alt="Hot Pot">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Hot Pot</p>
+                                        <p class="card-text fs-4">&#8369;350</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczP2QE6yxqi3Z8xshpb67vk998J8NmWoto2_S8VUceJrT7ZXB84UVlnUysjtYInLeIMrtGBXa8kMgDovrZ4c8pKoAc3nv-k7gvLK8zXGb3g0X5mY4nw=w2400" alt="Scallion Pancake">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Scallion Pancake</p>
+                                        <p class="card-text fs-4">&#8369;250</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczN_iRK3qOKdoeSBskxpXZdTzs301F0rIoqV9NDcvCvMqGeJlkKC35mh783k1vfzKEUk6xzaYWVEv38ROxwZ1h6lUmVofkwChKtJkX6UHxIc3AdGX84=w2400" alt="Roast Duck">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Roast Duck</p>
+                                        <p class="card-text fs-4">&#8369;210</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOCaMaKT7vFYrZpZDwFan-a-UtGQ1XRoegd_EQYQZe9S4GEPwkRt6dJSB5BFCMWobIIBjA_ZPlx-dJmycyHQnzlfqYGimUDnuXNzNCR_Ket5q3S_fY=w2400" alt="Lotus Root Stir Fry">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Lotus Root Stir Fry</p>
+                                        <p class="card-text fs-4">&#8369;90</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOpsb0xYFXUslUxkXtQLw3dZq2NvLepO0cbTMgX6a4VP3HaJnWa2oLO4sim7qvHU7MNUBosn3XKaq0xPFHzWOmYuqU_sshtjFLWMhy9bSC8WPf77UI=w2400" alt="Steamed Eggplant">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Steamed Eggplant</p>
+                                        <p class="card-text fs-4">&#8369;70</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNRta4xFccz3_NWjWQ05WcG8CO3RlvIXijST5QNKO85x3RKIfV1a-I3vw267WeUOq2VAKZiwuVmqOKDPGFPfkI6X8QyJdCYBuW4FQ9GRWkhfVYkZuI=w2400" alt="Kung Pao Chicken">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Kung Pao Chicken</p>
+                                        <p class="card-text fs-4">&#8369;150</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="desserts">
+                    <p class="h1 mt-2 mb-2">Desserts</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOaTlloIIOfJ9Js_me-zTTdxOgZx3Rak6_jC-fIJOXcl7a5uZl14duZqUg6Q-OAg748xzPmifH3SSTB0mHc4F7PvVchxdGP2JjhB1MPt0NGOdx9CJE=w2400" alt="Tanghulu">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Tanghulu</p>
+                                        <p class="card-text fs-4">&#8369;100</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczP19WVwFvAkAMOAa4KX9GQpjHuXz2y75WAArlMVD7zigtRjB6vebhzyGlKNtYtfwmXbu9V3IejDxlsdaVbhMxtzmt5yiai684CUFnutbedQt6qoH3A=w2400" alt="Moon Cake">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Moon Cake</p>
+                                        <p class="card-text fs-4">&#8369;90</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczMm7KKUje42F5ibbCnupQlVjOpcfvdDPAMdP3uY7A2a3ozjzq2SZ27Od1qLsk5Guqr_5p6D5RkGOzDpIzNDBeDItXvwI50uth3bmHRvpU9e-ELQWHA=w2400" alt="Almond Jelly">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Almond Jelly</p>
+                                        <p class="card-text fs-4">&#8369;80</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczO2N9u5Ors3Vs9S-ZcRwH5lD3u5cp14tCfms0JFa5tk9TQjDaJJZ8rdx3fyNme-eFBc-Dfhp7Ermrbab2qZae7gYyZQp4SH6Iv_GlEVu8Itr-Kgpjc=w2400" alt="Buchi">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Buchi</p>
+                                        <p class="card-text fs-4">&#8369;60</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPYngjaI7qQwfDxMMgIJoDaK-zm1I5TzkveEY-w9t_sz9LlQOW7k5teDkdKyx2W5beFA0YGQiA6hD5yqky3kzo6My_5Hjhsb1QaRfzmMaykGj1YZ8Q=w2400" alt="Fortune Cookie">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fortune Cookie</p>
+                                        <p class="card-text fs-4">&#8369;60</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOhglaG5Oz0HqdUe726az00vTdQGB4sAWMwK8Z4fhvu4JW_3GCGn4Lw7xFz1AD4VU0_m0wXyCk6QnbOCKxKtp_vWwrUd_dBiizcI3I4avThhpR7Jkw=w2400" alt="Fruit Tanghulu">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fruit Tanghulu</p>
+                                        <p class="card-text fs-4">&#8369;55</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNe5WDbplT6Phha5sV5g37uXxjoJsHYmP6kST7LlC0cD0DIuSwPw7Ez7vkK0LQfBGEYnwZN9DxJQqkOoC60BbIwynlBtrktmqeDtFnT70jYFZG2iMc=w2400" alt="Egg Tarts">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Egg Tarts</p>
+                                        <p class="card-text fs-4">&#8369;35</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOxUUOZQwcjJPxwHOikwHrKfn-acX4ZaNwkjKvSjRX75DSyyMIkltO-FR5JivSG2bqAtn71wDRvt-2yeBiFXlK020mNA2F0lUmx7bci0L9ce8CS3bo=w2400" alt="Fruit Tart">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fruit Tart</p>
+                                        <p class="card-text fs-4">&#8369;85</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="drinks">
+                    <p class="h1 mt-2 mb-2">Drinks</p>
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPFDospPVbywCCmvH8KhLy1hcBZf9QX2yLL-Bzj1LoK_ZJm4VPzhwfb8kxo_NsFR21shu1XM7RM1A34OFQXybvO3NARSyweDPraO4VyZrRCgwVSVog=w2400" alt="Tea">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Tea</p>
+                                        <p class="card-text fs-4">&#8369;130</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPzrmLso8YGavjZA-ROfRXSv7SGEapn9zYR7yL9L_OhRS5KYNIKVtjgV7yhGXgE2UOdUXu4l3KVkEgDEK56U4TUj7_W6gwkl9Tnmw7EVF3U_wkKNvc=w2400" alt="Bubble Tea">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Bubble Tea</p>
+                                        <p class="card-text fs-4">&#8369;150</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczNYs6egz3zwwSqBee-LUKjn0T5V78FQms8VkZgoEXUpBKljyOA4ptuh5GhGE3v1FY3cD3Tnlwdbfyb5NYupcDz-dPIg8BWDeh1CSSfdweONtDHvUkk=w2400" alt="Soy Milk">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Soy Milk</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOUkwPRxq_Gy97UciXoEQDNw70pPbD4AoCZMYF0pvQOIzCPAgNspZq351iVzFdyFBqpmON-69AA11tF8AXRNrh0X8ZBKlOLancLC_4BrbN_eILlrmc=w2400" alt="Salted Soda Water">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Salted Soda Water</p>
+                                        <p class="card-text fs-4">&#8369;100</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczPZ7JOpuK2Hnj6Je5bezEQcuAezF5Z8SBCP2602w3Mh-pwvlrPrJ8rX-j-q_-7_JVaTEZV2rh_4Sz0ePvuFa2SbxFgVoWG-ZFq3KnxYulWDKN1ZHL8=w2400" alt="Rice Wine">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Rice Wine</p>
+                                        <p class="card-text fs-4">&#8369;120</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczOfB-A-LvI9ZXt6_OwhxVDIFPVxpvKK_7i5yvnnfcfYkokjXg004MYT4nlMtsj99lP48FCIKRc2zaRh7pvaHj5yBRqZBnhpr4Ep22MhGc4sLri9an4=w2400" alt="Fruit Tea">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fruit Tea</p>
+                                        <p class="card-text fs-4">&#8369;75</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczN_sXaDL8zQNM42eJ44xcVcokX10BAtubf_KHodlD2TdmUWYIMVr2QgeJq-8TMHYVJ3PMUnOhAKCb0C9TxWJAx0oLRkYbN6gGyzAWNN2T-iFYIOwS4=w2400" alt="Fruit Shake">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Fruit Shake</p>
+                                        <p class="card-text fs-4">&#8369;90</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="card h-100">
+                                <img src="https://lh3.googleusercontent.com/pw/AP1GczMiwOuGQsp1KieCCaxw0C76nWD2vjrUdQzG2T0-LQCfJtf8bgkcbpRgL_IeRpRFE0fiDWjL_5gBxiHgDie0-GoBiik2H-1frEF4fXSV92sqFzm2-2k=w2400" alt="Coffee">
+                                <div class="card-body">
+                                    <div class="card-info">
+                                        <p class="card-title h2">Coffee</p>
+                                        <p class="card-text fs-4">&#8369;60</p>
+                                    </div>
+                                    <button class="btn"><img src="https://lh3.googleusercontent.com/pw/AP1GczMdXzBlCWKG8wHn35Y7-IYav0RH9oeyy_zYtSWFKXoz7dLN2nqNmn24UcD9hHo4Ba6uj5TN10QUF-aCakQodxEHJuxMhdW9_MqRq9dGUQVdxyXpEhs=s128-p-k" alt="Add To Cart"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div id="cart" class="w-100 border border-gold bg-light position-sticky top-15 d-flex flex-column align-items-center overflow-hidden">
+                    <div id="items" class="w-100 h-50 overflow-y-auto">
+
+                    </div>
+                    <div id="checkout" class="w-75 h-50">
+                        <form action="http://47.129.9.35/cs3/checkout.php" method="post" onsubmit="prepareCheckout()">
+                            <div class="d-flex flex-column align-items-center gap-1">
+                                <input required type="text" name="cust_name" class="w-100 form-control mt-1" placeholder="Name">
+                                <input required type="text" name="cust_email" class="w-100 form-control" placeholder="Email">
+                                <textarea required name="cust_addr" class="w-100 form-control limited" placeholder="Address"></textarea>
+                                <input type="hidden" name="cust_order" id="cust_order">
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="fs-3 m-0">Total</p>
+                                <p class="fs-3 m-0">&#8369;<span id="total-amount">0</span></p>
+                            </div>
+                            <div>
+                                <input type="submit" value="Checkout" class="form-control w-100">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        function prepareCheckout() {
+            const custOrderInput = document.getElementById('cust_order')
+            const order = cartItems.map(item => ({
+                prod_name: item.name,
+                prod_price: item.price
+            }));
+            custOrderInput.value = JSON.stringify(order);
+        }
+
+        const cartItems = [];
+        const itemsElement = document.getElementById('items');
+        const totalAmountElement = document.getElementById('total-amount');
+
+        function updateCart() {
+            itemsElement.innerHTML = '';
+            let total = 0;
+
+            cartItems.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'd-flex align-items-center justify-content-between border-bottom p-2';
+
+                itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover;">
+                    <div class="flex-grow-1 ms-2">
+                        <p class="m-0 fw-bold">${item.name}</p>
+                        <p class="m-0 text-muted">&#8369;${item.price}</p>
+                    </div>
+                    <button class="btn d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; background-color: #a62c2b; border-radius: 50%;" onclick="removeItem(${index});"><img src="https://lh3.googleusercontent.com/pw/AP1GczN6pLqqCvPsE5ktwP_L9UarIq8hhyLKzwhZgUIDH7zo8lzNzmbiLg3z-bZpY5zE9goVupGchuDOQHYZI_Ivfo21kstXSA1Nedhb0eTUQBksSnWAlp4=s128-p-k" alt="Add To Cart" alt="Garbage Can" style="width: 30px; height: 30px; filter: invert(1);"></button>
+                `;
+                itemsElement.appendChild(itemDiv);
+                total += item.price;
+            });
+
+            totalAmountElement.textContent = total;
+        }
+
+        function removeItem(index) {
+            cartItems.splice(index, 1)
+            updateCart();
+        }
+
+        document.querySelectorAll('.card').forEach(card => {
+            const button = card.querySelector('.btn')
+            button.addEventListener('click', () => {
+                const name = card.querySelector('.card-title').innerText;
+                const priceText = card.querySelector('.card-text').innerText.replace(/[^\d.]/g, '');
+                const price = parseFloat(priceText);
+                const image = card.querySelector('img').src;
+                
+                cartItems.push({ name, price, image });
+                updateCart();
+            });
+        });
+    </script>
+</body>
+</html>
